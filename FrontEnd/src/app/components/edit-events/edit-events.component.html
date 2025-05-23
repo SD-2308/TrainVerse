@@ -1,0 +1,81 @@
+<app-admin-header></app-admin-header>
+
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-9">
+          <div class="card border-0 shadow-lg rounded-lg p-4">
+            <h4 class="mb-4">Update Event</h4>
+
+            <form (ngSubmit)="onUpdateEvent()" #eventForm="ngForm">
+              
+              <!-- Title -->
+              <div class="mb-3">
+                <label for="title" class="form-label">Event Title</label>
+                <input id="title" name="title" class="form-control"
+                       [(ngModel)]="event.title" required maxlength="100"
+                       placeholder="Enter event title" />
+              </div>
+
+              <!-- Date -->
+              <div class="mb-3">
+                <label for="date" class="form-label">Event Date</label>
+                <input type="date" id="date" name="date" class="form-control"
+                       [(ngModel)]="event.date" required />
+              </div>
+
+              <!-- Image URL -->
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <input id="imageUrl" name="imageUrl" class="form-control"
+                       [(ngModel)]="event.imageUrl" required
+                       placeholder="Enter image URL" />
+              </div>
+
+              <!-- Speaker -->
+              <div class="mb-3">
+                <label for="speaker" class="form-label">Speaker</label>
+                <input id="speaker" name="speaker" class="form-control"
+                       [(ngModel)]="event.speaker" required maxlength="100"
+                       placeholder="Enter speaker name" />
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" class="form-control"
+                          rows="3" [(ngModel)]="event.description" required
+                          maxlength="1000" placeholder="Event description"></textarea>
+              </div>
+
+              <!-- Timing -->
+              <div class="mb-3">
+                <label for="timing" class="form-label">Event Timing</label>
+                <input id="timing" name="timing" class="form-control"
+                       [(ngModel)]="event.timing" required
+                       placeholder="e.g., 10:00 AM - 12:00 PM" />
+              </div>
+
+              <!-- Meeting URL -->
+              <div class="mb-3">
+                <label for="meetingUrl" class="form-label">Meeting/Join URL</label>
+                <input id="meetingUrl" name="meetingUrl" class="form-control"
+                       [(ngModel)]="event.meetingUrl" required
+                       placeholder="https://zoom.us/..." />
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary update-btn">
+                  <i class="fas fa-save me-2"></i>Update Event
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

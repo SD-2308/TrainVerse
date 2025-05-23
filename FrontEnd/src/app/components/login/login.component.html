@@ -1,0 +1,159 @@
+<app-header></app-header>
+
+<div class="dinesh">
+  <div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+      <div class="row g-0">
+        <!-- Branding -->
+        <div class="col-lg-6 d-none d-lg-flex bg-primary-gradient align-items-center justify-content-center p-5">
+          <div class="text-center text-white">
+            <!-- <img src="https://pngimg.com/uploads/walt_disney/walt_disney_PNG19.png" alt="Logo" class="mb-4" width="100"> -->
+            <h2 class="fw-bold mb-3">Welcome Back!</h2>
+            <p class="mb-0">Access your account to continue learning</p>
+          </div>
+        </div>
+
+        <!-- Login Forms -->
+        <div class="col-lg-6 p-5">
+          <!-- Tabs -->
+          <ul class="nav nav-pills nav-fill mb-4">
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="activeTab === 'user'" (click)="switchTab('user')">User</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="activeTab === 'professor'"
+                (click)="switchTab('professor')">Professor</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="activeTab === 'admin'"
+                (click)="switchTab('admin')">Admin</button>
+            </li>
+          </ul>
+
+          <!-- Error Message -->
+          <div *ngIf="msg" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" (click)="msg = ''"></button>
+          </div>
+
+          <!-- User Login -->
+          <div *ngIf="activeTab === 'user'" class="tab-pane fade show active">
+            <h2 class="text-center mb-4 fw-bold color">User Login</h2>
+            <form (ngSubmit)="loginUser()" #userForm="ngForm" novalidate>
+              <div class="mb-3">
+                <label for="userEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control form-control-lg" id="userEmail" name="email"
+                  [(ngModel)]="user.email" email required #userEmailRef="ngModel" placeholder="user@example.com">
+                <div class="invalid-feedback d-block" *ngIf="userEmailRef.invalid && userEmailRef.touched">
+                  Please enter a valid email
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="userPassword" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-lg" id="userPassword" name="password"
+                  [(ngModel)]="user.password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                  required #userPasswordRef="ngModel" placeholder="••••••••">
+                <div class="invalid-feedback d-block" *ngIf="userPasswordRef.invalid && userPasswordRef.touched">
+                  Password must be at least 8 characters, include 1 uppercase letter, 1 number, and 1 special character
+                </div>
+              </div>
+
+              <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold" [disabled]="userForm.invalid">
+                  Login
+                </button>
+              </div>
+
+              <!-- <div class="text-center mb-3">
+                <a href="#" class="text-decoration-none">Forgot password?</a>
+              </div> -->
+            </form>
+            <div class="text-center mt-4">
+              <p class="text-muted">Don't have an account?
+                <a class="text-primary fw-bold text-decoration-none" [routerLink]="['/register']">Sign up</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Professor Login -->
+          <div *ngIf="activeTab === 'professor'" class="tab-pane fade show active">
+            <h2 class="text-center mb-4 fw-bold color">Professor Login</h2>
+            <form (ngSubmit)="loginProfessor()" #profForm="ngForm" novalidate>
+              <div class="mb-3">
+                <label for="profEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control form-control-lg" id="profEmail" name="email"
+                  [(ngModel)]="professor.email" email required #profEmailRef="ngModel" placeholder="prof@example.com">
+                <div class="invalid-feedback d-block" *ngIf="profEmailRef.invalid && profEmailRef.touched">
+                  Please enter a valid email
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="profPassword" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-lg" id="profPassword" name="password"
+                  [(ngModel)]="professor.password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                  required #profPasswordRef="ngModel" placeholder="••••••••">
+                <div class="invalid-feedback d-block" *ngIf="profPasswordRef.invalid && profPasswordRef.touched">
+                  Password must be at least 8 characters, include 1 uppercase letter, 1 number, and 1 special character
+                </div>
+              </div>
+
+              <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold" [disabled]="profForm.invalid">
+                  Login
+                </button>
+              </div>
+            </form>
+            <div class="text-center mt-4">
+              <p class="text-muted">Don't have an account?
+                <a class="text-primary fw-bold text-decoration-none" [routerLink]="['/register']">Sign up</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Admin Login -->
+          <div *ngIf="activeTab === 'admin'" class="tab-pane fade show active">
+            <h2 class="text-center mb-4 fw-bold color">Admin Login</h2>
+            <form (ngSubmit)="adminLogin()" #adminForm="ngForm" novalidate>
+              <div class="mb-3">
+                <label for="adminEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control form-control-lg" id="adminEmail" name="email"
+                  [(ngModel)]="adminEmail" email required #adminEmailRef="ngModel" placeholder="Enter a Admin Email id">
+                <div class="invalid-feedback d-block" *ngIf="adminEmailRef.invalid && adminEmailRef.touched">
+                  Please enter a valid email
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="adminPassword" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-lg" id="adminPassword" name="password"
+                  [(ngModel)]="adminPassword" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                  required #adminPasswordRef="ngModel" placeholder="••••••••">
+                <div class="invalid-feedback d-block" *ngIf="adminPasswordRef.invalid && adminPasswordRef.touched">
+                  Password must be at least 8 characters, include 1 uppercase letter, 1 number, and 1 special character
+                </div>
+              </div>
+
+              <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold"
+                  [disabled]="adminForm.invalid">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sign up link -->
+          <!-- <div class="text-center mt-4">
+            <p class="text-muted">Don't have an account?
+              <a class="text-primary fw-bold text-decoration-none" [routerLink]="['/register']">Sign up</a>
+            </p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

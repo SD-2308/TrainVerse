@@ -1,0 +1,128 @@
+<app-admin-header></app-admin-header>
+
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-9">
+          <div class="card border-0 shadow-lg rounded-lg p-4">
+            <h4 class="mb-4">Add Event</h4>
+            <form (ngSubmit)="onAddEvent()" #eventForm="ngForm">
+
+              <!-- Title -->
+              <div class="mb-3">
+                <label for="title" class="form-label">Event Title</label>
+                <div class="input-icon-group">
+                  <i class="fas fa-calendar-alt input-icon"></i>
+                  <input id="title" name="title" class="form-control icon-input"
+                         [(ngModel)]="event.title" required maxlength="100"
+                         pattern="[A-Za-z0-9\s\-]+" #title="ngModel"
+                         placeholder="Enter event title" />
+                </div>
+                <div *ngIf="title.invalid && title.touched" class="text-danger">
+                  <small *ngIf="title.errors?.['required']">Title is required.</small>
+                  <small *ngIf="title.errors?.['maxlength']">Max 100 characters.</small>
+                  <small *ngIf="title.errors?.['pattern']">Only letters, numbers, spaces, and hyphens allowed.</small>
+                </div>
+              </div>
+
+              <!-- Date -->
+              <div class="mb-3">
+                <label for="date" class="form-label">Event Date</label>
+                <div class="input-icon-group">
+                  <i class="fas fa-calendar-day input-icon"></i>
+                  <input type="date" id="date" name="date" class="form-control icon-input"
+                         [(ngModel)]="event.date" required #date="ngModel" />
+                </div>
+                <div *ngIf="date.invalid && date.touched" class="text-danger">
+                  <small>Date is required.</small>
+                </div>
+              </div>
+
+              <!-- Image URL -->
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <div class="input-icon-group">
+                  <i class="fas fa-image input-icon"></i>
+                  <input id="imageUrl" name="imageUrl" class="form-control icon-input"
+                         [(ngModel)]="event.imageUrl" required #imageUrl="ngModel"
+                         placeholder="Enter image URL" />
+                </div>
+                <div *ngIf="imageUrl.invalid && imageUrl.touched" class="text-danger">
+                  <small>Image URL is required.</small>
+                </div>
+              </div>
+
+              <!-- Speaker -->
+              <div class="mb-3">
+                <label for="speaker" class="form-label">Speaker</label>
+                <div class="input-icon-group">
+                  <i class="fas fa-user input-icon"></i>
+                  <input id="speaker" name="speaker" class="form-control icon-input"
+                         [(ngModel)]="event.speaker" required maxlength="100"
+                         pattern="[A-Za-z\s\-]+" #speaker="ngModel"
+                         placeholder="Enter speaker name" />
+                </div>
+                <div *ngIf="speaker.invalid && speaker.touched" class="text-danger">
+                  <small *ngIf="speaker.errors?.['required']">Speaker name is required.</small>
+                  <small *ngIf="speaker.errors?.['maxlength']">Max 100 characters.</small>
+                  <small *ngIf="speaker.errors?.['pattern']">Only letters, spaces, and hyphens allowed.</small>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" rows="3"
+                          class="form-control" [(ngModel)]="event.description"
+                          required maxlength="1000" #description="ngModel"
+                          placeholder="Enter event description"></textarea>
+                <div *ngIf="description.invalid && description.touched" class="text-danger">
+                  <small *ngIf="description.errors?.['required']">Description is required.</small>
+                  <small *ngIf="description.errors?.['maxlength']">Max 1000 characters allowed.</small>
+                </div>
+              </div>
+
+              <!-- Timing -->
+              <div class="mb-3">
+                <label for="timing" class="form-label">Event Timing</label>
+                <div class="input-icon-group">
+                  <i class="fas fa-clock input-icon"></i>
+                  <input id="timing" name="timing" class="form-control icon-input"
+                         [(ngModel)]="event.timing" required maxlength="50"
+                         placeholder="e.g., 10:00 AM - 12:00 PM" #timing="ngModel" />
+                </div>
+                <div *ngIf="timing.invalid && timing.touched" class="text-danger">
+                  <small *ngIf="timing.errors?.['required']">Timing is required.</small>
+                  <small *ngIf="timing.errors?.['maxlength']">Max 50 characters.</small>
+                </div>
+              </div>
+
+              <!-- Meeting URL -->
+              <div class="mb-3">
+                <label for="meetingUrl" class="form-label">Meeting/Join URL</label>
+                <div class="input-icon-group">
+                  <i class="fas fa-link input-icon"></i>
+                  <input id="meetingUrl" name="meetingUrl" class="form-control icon-input"
+                         [(ngModel)]="event.meetingUrl" required #meetingUrl="ngModel"
+                         placeholder="Enter meeting URL" />
+                </div>
+                <div *ngIf="meetingUrl.invalid && meetingUrl.touched" class="text-danger">
+                  <small>Meeting URL is required.</small>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary update-btn" [disabled]="eventForm.invalid">
+                  <i class="fas fa-plus-circle me-2"></i>Add Event
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

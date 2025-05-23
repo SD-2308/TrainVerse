@@ -1,0 +1,61 @@
+<app-dashboard-header></app-dashboard-header>
+
+<div class="layout">
+    <!-- Scrollable Main content -->
+    <div class="main-content">
+
+        <div class="container">
+            <!-- Course Header -->
+            <div class="course-header">
+                <div>
+                    <h2 class="course-title">Enrolled Events</h2>
+                    <p class="course-subtitle">The Best Events For You</p>
+                </div>
+                <button class="explore-btn">
+                    <i class="fas fa-compass"></i> Explore More
+                </button>
+            </div>
+
+            <!-- Course Grid -->
+            
+            <ng-container *ngIf="(myenrollments | async) as events">
+              <div class="course-grid" *ngIf="events.length > 0; else noEvents">
+                <div class="course-card" *ngFor="let event of events">
+                  <div class="card-image">
+                    <img [src]="event.imageUrl" alt="{{ event.eventTitle }}">
+                  </div>
+                  <div class="card-header">
+                    <div class="course-name">{{ event.eventTitle }}</div>
+                    <div class="course-videos">{{ event.date }} •  {{ event.timing }}</div>
+                  </div>
+                  <div class="card-footer">
+                    <a [href]="event.meetingUrl" target="_blank" class="start-btn">
+                      <span>Join Now</span>
+                      <i class="fas fa-chevron-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fallback message -->
+              <ng-template #noEvents>
+                <div class="no-events-container">
+                  <p class="no-events-text">No events are enrolled.</p>
+                  <a routerLink="/events" class="link-events-btn">
+                    <i class="fas fa-calendar-alt"></i> Browse All Events
+                  </a>
+                </div>
+              </ng-template>
+
+            </ng-container>
+
+  
+        </div>
+
+
+
+    
+        <footer>© 2025 StudyPortal. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></footer>
+    </div>
+</div>
+

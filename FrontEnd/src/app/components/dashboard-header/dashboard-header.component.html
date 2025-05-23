@@ -1,0 +1,37 @@
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1><i class="fas fa-graduation-cap"></i> StudyPortal</h1>
+  
+    <!-- Center Nav Links -->
+    <ul class="center-nav">
+      <li class="nav-item"><a class="nav-link active" routerLink="/home">Home</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/course">Courses</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/instructors">Instructors</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/events">Events</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/contact">Contact</a></li>
+    </ul>
+  
+    <!-- Right Nav Links -->
+    <div class="nav-links" (click)="logout()">
+      <a ><i class="fas fs-4 fa-right-from-bracket"></i> logout</a>
+    </div>
+  </nav> 
+  
+
+  <!-- Main Layout -->
+
+    <!-- Fixed Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-graduation-cap"></i> <span>Dashboard</span></h2>
+      </div>
+      <div class="sidebar-menu">
+        <a routerLink="/Student_Dashboard" class="active"><i class="fas fa-house"></i> <span>Dashboard</span></a>
+        <a routerLink="/My_Course" ><i class="fas fa-book"></i> <span>My Courses</span></a>
+        <a routerLink="/My_Event"><i class="fas fa-calendar-days"></i> <span>My Events</span></a>
+        <a routerLink="/My_Profile"><i class="fas fa-user"></i> <span>My Profile</span></a>
+        
+
+      </div>
+      
+    </div>

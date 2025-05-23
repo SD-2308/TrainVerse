@@ -1,0 +1,199 @@
+<app-admin-header></app-admin-header>
+
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-9">
+          <div class="profile-card card border-0 shadow-lg rounded-lg p-4">
+            <div class="form-section">
+              <h4 class="mb-4">Course Information</h4>
+              <form #editForm="ngForm">
+                
+                <!-- Course Name and Course ID Row -->
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="coursename" class="form-label">Course Name</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-book input-icon"></i>
+                      <input id="coursename" name="coursename" [(ngModel)]="course.coursename" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="courseid" class="form-label">Course ID</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-id-badge input-icon"></i>
+                      <input id="courseid" name="courseid" [(ngModel)]="course.courseid" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Instructor Name and Institution Row -->
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="instructorname" class="form-label">Instructor Name</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-chalkboard-teacher input-icon"></i>
+                      <input id="instructorname" name="instructorname" [(ngModel)]="course.instructorname" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="instructorinstitution" class="form-label">Instructor Institution</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-university input-icon"></i>
+                      <input id="instructorinstitution" name="instructorinstitution" [(ngModel)]="course.instructorinstitution" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Enrolled Date and Enrolled Count Row -->
+                <div class="row mb-3">
+                  <!-- <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="enrolleddate" class="form-label">Enrolled Date</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-calendar-alt input-icon"></i>
+                      <input id="enrolleddate" name="enrolleddate" [(ngModel)]="course.enrolleddate" type="date" class="form-control icon-input" required readonly>
+                    </div>
+                  </div> -->
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="language" class="form-label">Language</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-language input-icon"></i>
+                      <input id="language" name="language" [(ngModel)]="course.language" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="imageUrl" class="form-label">Image URL</label>
+                    <input id="imageUrl" name="imageUrl" [(ngModel)]="course.imageUrl" class="form-control" required readonly>
+                  </div>
+                  <!-- <div class="col-md-6">
+                    <label for="enrolledcount" class="form-label">Enrolled Count</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-users input-icon"></i>
+                      <input id="enrolledcount" name="enrolledcount" [(ngModel)]="course.enrolledcount" class="form-control icon-input" required readonly>
+                    </div>
+                  </div> -->
+                </div>
+
+                <!-- Youtube URL and Website URL Row -->
+                <!-- <div class="row mb-3">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="youtubeurl" class="form-label">YouTube URL</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-video input-icon"></i>
+                      <input id="youtubeurl" name="youtubeurl" [(ngModel)]="course.youtubeurl" class="form-control icon-input">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="websiteurl" class="form-label">Website URL</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-link input-icon"></i>
+                      <input id="websiteurl" name="websiteurl" [(ngModel)]="course.websiteurl" class="form-control icon-input">
+                    </div>
+                  </div>
+                </div> -->
+
+                <!-- Course Type and Skill Level Row -->
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="coursetype" class="form-label">Course Type</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-laptop-code input-icon"></i>
+                      <input id="coursetype" name="coursetype" [(ngModel)]="course.coursetype" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="skilllevel" class="form-label">Skill Level</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-signal input-icon"></i>
+                      <input id="skilllevel" name="skilllevel" [(ngModel)]="course.skilllevel" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Language and Price Row -->
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="rating" class="form-label">Rating</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-star input-icon"></i>
+                      <input id="rating" name="rating" [(ngModel)]="course.rating" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label for="price" class="form-label">Price</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-dollar-sign input-icon"></i>
+                      <input id="price" name="price" [(ngModel)]="course.price" class="form-control icon-input" required readonly>
+                    </div>
+                  </div>
+                </div>
+                <!-- Duration and Image URL -->
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <label for="duration" class="form-label">Duration</label>
+                    <input id="duration" name="duration" [(ngModel)]="course.duration" class="form-control" required readonly>
+                  </div>
+                  
+                </div>
+
+                <!-- Department Field -->
+                <div class="mb-3">
+                  <label for="department" class="form-label">Department</label>
+                  <input id="department" name="department" [(ngModel)]="course.department" class="form-control" required readonly>
+                </div>
+
+                <!-- Rating and Description Row -->
+                <div class="row mb-3">
+                  
+                  <div class="col-md-12">
+                    <label for="description" class="form-label">Description</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-align-left input-icon"></i>
+                      <textarea id="description" name="description" [(ngModel)]="course.description" class="form-control icon-input" rows="3" required readonly></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FAQ Fields -->
+                <div class="mb-3">
+                  <label for="faq1Question" class="form-label">FAQ 1 Question</label>
+                  <input id="faq1Question" name="faq1Question" [(ngModel)]="course.faq1Question" class="form-control" required readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="faq1Answer" class="form-label">FAQ 1 Answer</label>
+                  <textarea id="faq1Answer" name="faq1Answer" [(ngModel)]="course.faq1Answer" class="form-control" rows="3" required readonly></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="faq2Question" class="form-label">FAQ 2 Question</label>
+                  <input id="faq2Question" name="faq2Question" [(ngModel)]="course.faq2Question" class="form-control" required readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="faq2Answer" class="form-label">FAQ 2 Answer</label>
+                  <textarea id="faq2Answer" name="faq2Answer" [(ngModel)]="course.faq2Answer" class="form-control" rows="3" required readonly></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="faq3Question" class="form-label">FAQ 3 Question</label>
+                  <input id="faq3Question" name="faq3Question" [(ngModel)]="course.faq3Question" class="form-control" required readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="faq3Answer" class="form-label">FAQ 3 Answer</label>
+                  <textarea id="faq3Answer" name="faq3Answer" [(ngModel)]="course.faq3Answer" class="form-control" rows="3" required readonly></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 text-center mt-4">
+      © 2025 StudyPortal. All rights reserved. |
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+  </div>
+</div>

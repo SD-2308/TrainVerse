@@ -1,0 +1,389 @@
+<app-admin-header></app-admin-header>
+
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12">
+          <div class="card shadow-lg border-0 rounded-lg p-4">
+            <div class="form-section">
+              <h4 class="mb-4">Add Course Chapters</h4>
+              <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
+
+                <!-- Course Info -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Select Course Name</label>
+                    <select class="form-select"
+                            [(ngModel)]="chapter.coursename"
+                            name="coursename"
+                            required
+                            (change)="onCourseNameChange(chapter.coursename)" disabled>
+                      <option value="" disabled selected>Select course name</option>
+                      <option *ngFor="let course of courses" [value]="course.coursename">
+                        {{ course.coursename }}
+                      </option>
+                    </select>
+                  </div>
+              
+                  <div class="col-md-6">
+                    <label class="form-label">Select Course ID</label>
+                    <select class="form-select"
+                            [(ngModel)]="chapter.courseid"
+                            name="courseid"
+                            required
+                            (change)="onCourseIdChange(chapter.courseid)" disabled>
+                      <option value="" disabled selected>Select course ID</option>
+                      <option *ngFor="let course of courses" [value]="course.courseid">
+                        {{ course.courseid }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Chapter 1 -->
+                <div class="chapter-section p-3 border rounded mb-4">
+                  <h4 style="margin-top: 10px; margin-bottom: 30px;">Chapter 1</h4>
+                  <div class="row mb-2">
+                    <div class="col-md-6">
+                      <label for="chName1" class="form-label">Chapter Name</label>
+                      <input id="chName1"
+                             name="chapter1name"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter1name" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="chId1" class="form-label">Chapter ID</label>
+                      <input id="chId1"
+                             name="chapter1id"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter1id" readonly>
+                    </div>
+                  </div>
+
+                  <div class="mb-2">
+                    <label for="chDesc1" class="form-label">Description</label>
+                    <textarea id="chDesc1"
+                              name="chapter1description"
+                              class="form-control"
+                              rows="2"
+                              [(ngModel)]="chapter.chapter1description" readonly>
+                    </textarea>
+                  </div>
+
+                  <div class="row mb-2">
+                    <div class="col-md-6">
+                      <label for="chVideoName1" class="form-label">Video Name</label>
+                      <input id="chVideoName1"
+                             name="chapter1videoname"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter1videoname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="chVideoUrl1" class="form-label">Video URL</label>
+                      <input id="chVideoUrl1"
+                             name="chapter1videourl"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter1videourl" readonly>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="chDocName1" class="form-label">Document Name</label>
+                      <input id="chDocName1"
+                             name="chapter1documentname"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter1documentname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="chDocUrl1" class="form-label">Document URL</label>
+                      <input id="chDocUrl1"
+                             name="chapter1documenturl"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter1documenturl" readonly>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chapter 2 -->
+                <div class="chapter-section p-3 border rounded mb-4">
+                  <h4 style="margin-top: 10px; margin-bottom: 30px;">Chapter 2</h4>
+                  <div class="row mb-2">
+                    <div class="col-md-6">
+                      <label for="chName2" class="form-label">Chapter Name</label>
+                      <input id="chName2"
+                             name="chapter2name"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter2name" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="chId2" class="form-label">Chapter ID</label>
+                      <input id="chId2"
+                             name="chapter2id"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter2id" readonly>
+                    </div>
+                  </div>
+
+                  <div class="mb-2">
+                    <label for="chDesc2" class="form-label">Description</label>
+                    <textarea id="chDesc2"
+                              name="chapter2description"
+                              class="form-control"
+                              rows="2"
+                              [(ngModel)]="chapter.chapter2description" readonly>
+                    </textarea>
+                  </div>
+
+                  <div class="row mb-2">
+                    <div class="col-md-6">
+                      <label for="chVideoName2" class="form-label">Video Name</label>
+                      <input id="chVideoName2"
+                             name="chapter2videoname"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter2videoname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="chVideoUrl2" class="form-label">Video URL</label>
+                      <input id="chVideoUrl2"
+                             name="chapter2videourl"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter2videourl" readonly>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="chDocName2" class="form-label">Document Name</label>
+                      <input id="chDocName2"
+                             name="chapter2documentname"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter2documentname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="chDocUrl2" class="form-label">Document URL</label>
+                      <input id="chDocUrl2"
+                             name="chapter2documenturl"
+                             class="form-control"
+                             [(ngModel)]="chapter.chapter2documenturl" readonly>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chapter 3 -->
+                <div class="chapter-section p-3 border rounded mb-4">
+                    <h4 style="margin-top: 10px; margin-bottom: 30px;">Chapter 3</h4>
+                    <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label for="chName3" class="form-label">Chapter Name</label>
+                        <input id="chName3"
+                            name="chapter3name"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter3name" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chId3" class="form-label">Chapter ID</label>
+                        <input id="chId3"
+                            name="chapter3id"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter3id" readonly>
+                    </div>
+                    </div>
+                
+                    <div class="mb-2">
+                    <label for="chDesc3" class="form-label">Description</label>
+                    <textarea id="chDesc3"
+                                name="chapter3description"
+                                class="form-control"
+                                rows="2"
+                                [(ngModel)]="chapter.chapter3description" readonly>
+                    </textarea>
+                    </div>
+                
+                    <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label for="chVideoName3" class="form-label">Video Name</label>
+                        <input id="chVideoName3"
+                            name="chapter3videoname"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter3videoname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chVideoUrl3" class="form-label">Video URL</label>
+                        <input id="chVideoUrl3"
+                            name="chapter3videourl"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter3videourl" readonly>
+                    </div>
+                    </div>
+                
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="chDocName3" class="form-label">Document Name</label>
+                        <input id="chDocName3"
+                            name="chapter3documentname"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter3documentname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chDocUrl3" class="form-label">Document URL</label>
+                        <input id="chDocUrl3"
+                            name="chapter3documenturl"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter3documenturl" readonly>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 4 -->
+                <div class="chapter-section p-3 border rounded mb-4">
+                    <h4 style="margin-top: 10px; margin-bottom: 30px;">Chapter 4</h4>
+                    <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label for="chName4" class="form-label">Chapter Name</label>
+                        <input id="chName4"
+                            name="chapter4name"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter4name" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chId4" class="form-label">Chapter ID</label>
+                        <input id="chId4"
+                            name="chapter4id"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter4id" readonly>
+                    </div>
+                    </div>
+                
+                    <div class="mb-2">
+                    <label for="chDesc4" class="form-label">Description</label>
+                    <textarea id="chDesc4"
+                                name="chapter4description"
+                                class="form-control"
+                                rows="2"
+                                [(ngModel)]="chapter.chapter4description" readonly>
+                    </textarea>
+                    </div>
+                
+                    <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label for="chVideoName4" class="form-label">Video Name</label>
+                        <input id="chVideoName4"
+                            name="chapter4videoname"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter4videoname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chVideoUrl4" class="form-label">Video URL</label>
+                        <input id="chVideoUrl4"
+                            name="chapter4videourl"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter4videourl" readonly>
+                    </div>
+                    </div>
+                
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="chDocName4" class="form-label">Document Name</label>
+                        <input id="chDocName4"
+                            name="chapter4documentname"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter4documentname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chDocUrl4" class="form-label">Document URL</label>
+                        <input id="chDocUrl4"
+                            name="chapter4documenturl"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter4documenturl" readonly>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 5 -->
+                <div class="chapter-section p-3 border rounded mb-4">
+                    <h4 style="margin-top: 10px; margin-bottom: 30px;">Chapter 5</h4>
+                    <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label for="chName5" class="form-label">Chapter Name</label>
+                        <input id="chName5"
+                            name="chapter5name"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter5name" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chId5" class="form-label">Chapter ID</label>
+                        <input id="chId5"
+                            name="chapter5id"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter5id" readonly>
+                    </div>
+                    </div>
+                
+                    <div class="mb-2">
+                    <label for="chDesc5" class="form-label">Description</label>
+                    <textarea id="chDesc5"
+                                name="chapter5description"
+                                class="form-control"
+                                rows="2"
+                                [(ngModel)]="chapter.chapter5description" readonly>
+                    </textarea>
+                    </div>
+                
+                    <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label for="chVideoName5" class="form-label">Video Name</label>
+                        <input id="chVideoName5"
+                            name="chapter5videoname"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter5videoname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chVideoUrl5" class="form-label">Video URL</label>
+                        <input id="chVideoUrl5"
+                            name="chapter5videourl"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter5videourl" readonly>
+                    </div>
+                    </div>
+                
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="chDocName5" class="form-label">Document Name</label>
+                        <input id="chDocName5"
+                            name="chapter5documentname"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter5documentname" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="chDocUrl5" class="form-label">Document URL</label>
+                        <input id="chDocUrl5"
+                            name="chapter5documenturl"
+                            class="form-control"
+                            [(ngModel)]="chapter.chapter5documenturl" readonly>
+                    </div>
+                    </div>
+                </div>
+                
+
+                <!-- Submit Button -->
+                <!-- <div class="d-grid">
+                  <button type="submit" class="btn btn-primary update-btn" [disabled]="chapterForm.invalid">
+                    <i class="fas fa-save me-2"></i>Save Chapter Info
+                  </button>
+                </div> -->
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-light py-3 text-center mt-4">
+      © 2025 StudyPortal. All rights reserved. |
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+  </div>
+</div>

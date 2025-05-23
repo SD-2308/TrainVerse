@@ -1,0 +1,71 @@
+.top-bar {
+    background-color: #f8f9fa; /* Light background */
+    font-size: 0.875rem;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .lang-select {
+    border: none;
+    background: transparent;
+    color: #6c757d;
+    font-size: 0.875rem;
+    outline: none;
+  }
+  .lang-select option {
+    color: black;
+  }
+  
+  .top-bar a {
+    text-decoration: none;
+  }
+  
+  .main-navbar {
+    font-family: 'Poppins', sans-serif;
+    background-color: #124E66;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #e9e9e9 !important;
+    padding: 0.75rem 1rem;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #00d4ff !important;
+  }
+  
+  .navbar-nav .nav-link::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #00d4ff;
+    transition: 0.4s ease;
+    margin-top: px;
+  }
+  
+  .navbar-nav .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  select option {
+    color: #000;
+  }
+  
+  .btn-primary {
+    background-color: #001524;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #5a54e8;
+  }
+
+ .person{
+  all:unset 
+ }
+  

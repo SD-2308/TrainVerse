@@ -1,0 +1,112 @@
+<app-admin-header></app-admin-header>
+
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-9 col-lg-10">
+          <div class="card profile-card border-0 shadow-lg rounded-lg p-4">
+            <div class="form-section">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="mb-0">Edit Professor</h4>
+                <button type="button" class="btn btn-outline-secondary" (click)="goBack()">
+                  <i class="bi bi-arrow-left"></i> Back
+                </button>
+              </div>
+
+              <div *ngIf="loading" class="text-center my-5">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2">Loading professor data...</p>
+              </div>
+
+              <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+              <div *ngIf="success" class="alert alert-success">Professor details updated successfully!</div>
+
+              <form *ngIf="!loading" (ngSubmit)="onSubmit()" #professorForm="ngForm">
+                <div class="row mb-3">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Professor ID</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.professorid" name="professorid" readonly disabled>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Status</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.status" name="status" readonly disabled>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Name*</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.professorname" name="professorname" required #nameField="ngModel">
+                    <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">Name is required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Email*</label>
+                    <input type="email" class="form-control" [(ngModel)]="professor.email" name="email" required #emailField="ngModel">
+                    <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">Valid email required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Degree Completed*</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.degreecompleted" name="degreecompleted" required #degreeField="ngModel">
+                    <div *ngIf="degreeField.invalid && (degreeField.dirty || degreeField.touched)" class="text-danger">Degree is required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Institution Name*</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.institutionname" name="institutionname" required #institutionField="ngModel">
+                    <div *ngIf="institutionField.invalid && (institutionField.dirty || institutionField.touched)" class="text-danger">Institution name is required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Department*</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.department" name="department" required #departmentField="ngModel">
+                    <div *ngIf="departmentField.invalid && (departmentField.dirty || departmentField.touched)" class="text-danger">Department is required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Experience (years)*</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.experience" name="experience" required #experienceField="ngModel">
+                    <div *ngIf="experienceField.invalid && (experienceField.dirty || experienceField.touched)" class="text-danger">Experience is required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Mobile Number*</label>
+                    <input type="text" class="form-control" [(ngModel)]="professor.mobile" name="mobile" required pattern="[0-9]{10}" #mobileField="ngModel">
+                    <div *ngIf="mobileField.invalid && (mobileField.dirty || mobileField.touched)" class="text-danger">Valid 10-digit mobile number required</div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Gender*</label>
+                    <select class="form-select" [(ngModel)]="professor.gender" name="gender" required #genderField="ngModel">
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div *ngIf="genderField.invalid && (genderField.dirty || genderField.touched)" class="text-danger">Please select gender</div>
+                  </div>
+
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                  <button type="submit" class="btn btn-primary" [disabled]="professorForm.invalid || saving">
+                    <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
+                    {{ saving ? 'Saving...' : 'Save Changes' }}
+                  </button>
+                  <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="bg-light py-3 text-center mt-4">
+        © 2025 StudyPortal. All rights reserved. |
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+      </footer>
+    </div>
+  </div>
+</div>

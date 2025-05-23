@@ -1,0 +1,300 @@
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    border-left: 5px solid #0d6efd;
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+.news-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.news-card img {
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover img {
+    transform: scale(1.05);
+}
+
+.news-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+}
+
+.video-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #000;
+    text-align: center;
+}
+
+.video-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.student-placement-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.student-placement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+/* video slider */
+.video-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.video-slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.video-slide {
+    min-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.video-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.slider-arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+
+/* Enhanced Event Carousel Styles */
+
+/* Section styling */
+.mb-5 {
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+  /* Title styling */
+  .section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.75rem !important;
+    font-size: 1.75rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    border-radius: 2px;
+  }
+  
+  /* Card styling */
+  .card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-radius: 1rem !important;
+    
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+  }
+  
+  /* Image styling */
+  .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .card:hover .card-img-top {
+    transform: scale(1.05);
+  }
+  
+  /* Card body styling */
+  .card-body {
+    padding: 1.25rem;
+    background: white;
+  }
+  
+  .card-title {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Date badge styling */
+  .text-muted {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #e9f7fe;
+    color: #3498db !important;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  /* Carousel controls styling */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .carousel-control-prev {
+    left: -20px;
+  }
+  
+  .carousel-control-next {
+    right: -20px;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #3498db !important;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-size: 50%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+      display: none;
+    }
+  }
+  
+  /* Add additional spacing for better layout */
+  .g-3 {
+    --bs-gutter-y: 1.5rem;
+  }
+  
+  /* Calendar icon styling */
+  .bi-calendar-event {
+    color: #3498db;
+  }

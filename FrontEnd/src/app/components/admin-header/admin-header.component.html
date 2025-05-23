@@ -1,0 +1,57 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <h1><i class="fas fa-graduation-cap"></i> TrainVerse</h1> <!-- Dynamically set title -->
+
+  <!-- Center Nav Links -->
+  <ul class="center-nav">
+    <li class="nav-item"><a class="nav-link active" routerLink="/home">Home</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/course">Courses</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/instructors">Instructors</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/events">Events</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/contact">Contact</a></li>
+  </ul>
+
+  <!-- Right Nav Links -->
+  <div class="nav-links" (click)="logout()">
+    <a><i class="fas fs-4 fa-right-from-bracket"></i> logout</a>
+  </div>
+</nav>
+
+<!-- Main Layout -->
+
+<!-- Fixed Sidebar -->
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2><i class="fas fa-graduation-cap"></i> <span>Dashboard</span></h2>
+  </div>
+  <div class="sidebar-menu">
+    <!-- Admin Links -->
+    <div *ngIf="currRole === 'admin'">
+      <a routerLink="/Admin_Dashboard" class="active"><i class="fas fa-gauge-high"></i> <span>Dashboard</span></a>
+      <a routerLink="/Add_Course"><i class="fas fa-plus-circle"></i> <span>Add Course</span></a>
+      <a routerLink="/Add_Chapter"><i class="fas fa-plus-circle"></i> <span>Add Chapter</span></a>
+      <a routerLink="/Add_Events"><i class="fas fa-plus-circle"></i> <span>Add Events</span></a>
+      <a routerLink="/Chapter_List"><i class="fas fa-list-alt"></i> <span>Chapter List</span></a>
+      <a routerLink="/Course_List"><i class="fas fa-book-open"></i> <span>Course List</span></a>
+      <a routerLink="/User_List"><i class="fas fa-users"></i> <span>User List</span></a>
+      <a routerLink="/Events_List"><i class="fas fa-users"></i> <span>Events List</span></a>
+      <a routerLink="/Contact_List"><i class="fas fa-users"></i> <span>Contact List</span></a>
+      <a routerLink="/Professor_List"><i class="fas fa-chalkboard-teacher"></i> <span>Professor List</span></a>
+      <a routerLink="/Approval"><i class="fas fa-clipboard-check"></i> <span>Approval List</span></a>
+    </div>
+
+    <!-- Professor Links -->
+    <!-- Professor Links -->
+    <div *ngIf="currRole === 'professor'">
+      <div *ngIf="professorStatus === 'accept'">
+        <a routerLink="/Professor_Dashboard" class="active"><i class="fas fa-gauge-high"></i> <span>Dashboard</span></a>
+        <a routerLink="/Add_Course"><i class="fas fa-plus-circle"></i> <span>Add Course</span></a>
+        <a routerLink="/Add_Chapter"><i class="fas fa-plus-circle"></i> <span>Add Chapter</span></a>
+        <a routerLink="/Course_List"><i class="fas fa-book-open"></i> <span>Course List</span></a>
+        <a routerLink="/Chapter_List"><i class="fas fa-list-alt"></i> <span>Chapter List</span></a>
+        <a routerLink="/User_List"><i class="fas fa-users"></i> <span>User List</span></a>
+      </div>
+      <a routerLink="/Approval"><i class="fas fa-clipboard-check"></i> <span>Approval Status</span></a>
+    </div>
+  </div>
+</div>

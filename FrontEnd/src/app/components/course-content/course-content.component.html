@@ -1,0 +1,389 @@
+<app-dashboard-header></app-dashboard-header>
+<div class="layout">
+    <!-- Scrollable Main content -->
+    <div class="main-content">
+
+<!-- Hero Section -->
+<div class="intro" *ngIf="course">
+    <div class="container">
+      <div class="intro_content">
+        <div class="intro_price"></div>
+  
+        <div class="rating_r">
+          <ng-container *ngFor="let star of getStars(course.rating); let i = index">
+            <i *ngIf="star === 'full'" class="fas fa-star"></i>
+            <i *ngIf="star === 'half'" class="fas fa-star-half-alt"></i>
+            <i *ngIf="star === 'empty'" class="far fa-star"></i>
+          </ng-container>
+          <span class="ms-2">({{ course.rating }} reviews)</span>
+        </div>
+  
+        <h1 class="intro_title">{{ course.coursename }}</h1>
+  
+        <div class="intro_meta">
+          <div class="intro_icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <div class="intro_instructors">
+            <a href="instructors.html">{{ course.instructorname }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Course Content -->
+<div class="course">
+    
+    <div class="container">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Tabs Navigation -->
+                <ul class="nav nav-tabs tabs" id="courseTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button" role="tab" aria-controls="curriculum" aria-selected="false">Curriculum</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab" aria-controls="notes" aria-selected="false">Notes</button>
+                    </li>
+                    <!-- <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="members-tab" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab" aria-controls="members" aria-selected="false">Members</button>
+                    </li> -->
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="courseTabsContent">
+                    <!-- Description Tab -->
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <h2 class="panel_title">About this course</h2>
+                        <div class="panel_text">
+                            <p>{{course.about}}</p>
+                        </div>
+                        
+                        <!-- Instructors Section -->
+                        <div class="instructors">
+                            <h2 class="panel_title">Instructor</h2>
+                            <div class="row mt-4">
+                                <!-- Instructor 1 -->
+                                <div class="col-md-6 col-lg-4 mb-4">
+                                    <div class="instructor">
+                                        <div class="instructor_image">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/11647/11647468.png" alt="Sarah Parker">
+                                        </div>
+                                        <div class="instructor_content">
+                                            <h5 class="instructor_name"><a href="#">{{course.instructorname}}</a></h5>
+                                            <h6 class="instructor_title">{{course.department}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQs Section -->
+                        <div class="faqs">
+                            <h2 class="panel_title">FAQs</h2>
+                            <div class="accordion mt-4" id="faqAccordion">
+                                <!-- FAQ 1 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header" id="faqHeading1">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                           {{course.faq1Question}}
+                                        </button>
+                                    </h3>
+                                    <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>{{course.faq1Answer}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ 2 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header" id="faqHeading2">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                            {{course.faq2Question}}
+                                        </button>
+                                    </h3>
+                                    <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>{{course.faq2Answer}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ 3 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header" id="faqHeading3">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                            {{course.faq3Question}}
+                                        </button>
+                                    </h3>
+                                    <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>{{course.faq3Answer}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Curriculum Tab -->
+                    <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+                        <h2 class="panel_title">Syllabus</h2>
+                        <div class="panel_text">
+                            <p>{{course.about}}</p>
+                        </div>
+
+                                                
+                        <!-- Video Player Section at the top -->
+                        <div #videoSection *ngIf="selectedVideo" class="video-player-section mb-4">
+                            <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center text-white hedcolor">
+                                <h5 class="mb-0">{{ selectedVideo.name }}</h5>
+                                <button (click)="closeVideo()" class="btn btn-sm btn-light">
+                                <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="ratio ratio-16x9">
+                                <video #videoPlayer controls>
+                                    <source [src]="selectedVideo.url" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="mb-0">{{ selectedVideo.description }}</p>
+                            </div>
+                            </div>
+                        </div>
+
+                        
+                        <!-- Chapters -->
+                          <div *ngIf="chapterlist.length > 0">
+                            <div *ngFor="let chapter of chapterlist; let i = index" class="cur_item">
+                                <div class="cur_title_container">
+                                    <h3 class="cur_title">Chapter {{ i + 1 }}</h3> <!-- This will display Chapter 1, Chapter 2, etc. -->
+                                    <span class="cur_num">{{ i + 1 }}/{{ chapterlist.length }}</span> <!-- Display the chapter number / total chapters -->
+                                </div>
+
+                              <div class="cur_item_content">
+                                <h4 class="cur_item_title">{{ chapter.name }}</h4>
+                                <p class="cur_item_text">{{ chapter.description }}</p>
+                          
+                                <ul class="cur_contents">
+                                  <li>
+                                    <div class="d-flex justify-content-between py-2">
+                                        <span><i class="fas fa-folder"></i>1 video, 1 reading</span>
+                                        <span class="cur_time"><i class="fas fa-clock"></i>1 Hours</span>
+                                    </div>
+                                    <ul class="mt-2 ps-4">
+                                      <li class="d-flex justify-content-between py-2">
+                                        <span class="pad"><i class="fas fa-video"></i> Video: {{ chapter.videoName }} </span>
+                                        <!-- <span class="cur_time"><i class="fas fa-clock"></i> 15 minutes</span> -->
+                                        <button class="btn btn-primary play-btn play-btn-primary" (click)="playVideo(chapter)"><i class="fas fa-play me-2"></i> Play Now</button>
+                                      </li>
+                                      
+                                      <li class="d-flex justify-content-between py-2">
+                                        <span class="pad"><i class="fas fa-file-alt"></i>Reading: {{ chapter.documentName }}</span>
+                                        <button class="btn btn-primary play-btn play-btn-primary" (click)="downloadDocument(chapter)"><i class="fas fa-play me-2"></i>Download Now</button>
+                                        <!-- <span class="cur_time"><i class="fas fa-clock"></i> 10 minutes</span> -->
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                            
+                        
+ 
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <!-- Notes Tab -->
+                    <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+                        <h2 class="panel_title">Notes</h2>
+                        <div class="panel_text">
+                            <p>Take your own notes here and refer back to them whenever you need. Keep track of important points and ideas.</p>
+                        </div>
+                        
+                        <!-- Add New Note Section -->
+                        <div class="add-note">
+                            <textarea id="noteInput" class="form-control" placeholder="Write your notes here..." rows="5"></textarea>
+                            <button class="btn btn-primary mt-3" (click)="addNote()">Add Note</button>
+                        </div>
+
+                        <!-- Notes List -->
+                        <div class="notes-list mt-5">
+                            <div *ngFor="let note of notes; let i = index" class="note-item">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="note-text">{{ note.text }}</p>
+                                    </div>
+                                    <button class="btn btn-danger btn-sm" (click)="deleteNote(i)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Members Tab -->
+                    <!-- <div class="tab-pane fade" id="members" role="tabpanel" aria-labelledby="members-tab">
+                        <h2 class="panel_title">Members</h2>
+                        <div class="panel_text">
+                            <p>Join our community of learners who are taking this course. Connect with fellow students to practice and learn together.</p>
+                        </div>
+                        
+                        
+                        <div class="row mt-4">
+                            <div class="col-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div class="member_image">
+                                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Member">
+                                </div>
+                                <h5 class="member_title mt-3">Lisa Wong</h5>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div class="member_image">
+                                    <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Member">
+                                </div>
+                                <h5 class="member_title mt-3">David Kim</h5>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div class="member_image">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Member">
+                                </div>
+                                <h5 class="member_title mt-3">Sophia Martinez</h5>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div class="member_image">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Member">
+                                </div>
+                                <h5 class="member_title mt-3">James Wilson</h5>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div class="member_image">
+                                    <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Member">
+                                </div>
+                                <h5 class="member_title mt-3">Olivia Brown</h5>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 text-center mb-4">
+                                <div class="member_image">
+                                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Member">
+                                </div>
+                                <h5 class="member_title mt-3">Robert Taylor</h5>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    
+                    <div class="sidebar_content">
+                        <!-- Course Features -->
+                        <div class="sidebar_section">
+                            <h3 class="sidebar_title">Course Features</h3>
+                            <ul class="features_list mt-3">
+                                <li>
+                                    <div class="feature_title">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Duration</span>
+                                    </div>
+                                    <div class="feature_text">{{course.duration}}</div>
+                                </li>
+                                <li>
+                                    <div class="feature_title">
+                                        <i class="fas fa-bell"></i>
+                                        <span>Chapters</span>
+                                    </div>
+                                    <div class="feature_text">5</div>
+                                </li>
+                                <li>
+                                    <div class="feature_title">
+                                        <i class="fas fa-universal-access"></i>
+
+                                        <span>Accessable</span>
+                                    </div>
+                                    <div class="feature_text">
+                                        <i class="fas fa-mobile-alt me-3" title="Mobile"></i>
+                                        <i class="fas fa-laptop" title="Laptop"></i>
+                                      </div>
+                                </li>
+                                <li>
+                                    <div class="feature_title">
+                                        <i class="fas fa-medal"></i>
+                                        <span>Certificate</span>
+                                    </div>
+                                    <div class="feature_text">Yes</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Certification -->
+                        <div class="sidebar_section mt-4">
+                            <h3 class="sidebar_title">Certification</h3>
+                            <div class="cert_image mt-3">
+                                <img src="https://static.vecteezy.com/system/resources/previews/021/920/489/original/certificate-of-achievement-template-free-vector.jpg" alt="Course Certificate">
+                            </div>
+                        </div>
+                        
+                        <!-- You May Like -->
+                        <!-- <div class="sidebar_section mt-4">
+                            <h3 class="sidebar_title">You may like</h3>
+                            <div class="like_items mt-3">
+                                <div class="like_item">
+                                    <div>
+                                        <div class="like_title">Spanish Grammar</div>
+                                        <div class="like_subtitle">Beginner Level</div>
+                                    </div>
+                                    <div class="like_price">$29</div>
+                                </div>
+                                <div class="like_item">
+                                    <div>
+                                        <div class="like_title">Conversational Spanish</div>
+                                        <div class="like_subtitle">Intermediate</div>
+                                    </div>
+                                    <div class="like_price">$39</div>
+                                </div>
+                                <div class="like_item">
+                                    <div>
+                                        <div class="like_title">Spanish Pronunciation</div>
+                                        <div class="like_subtitle">All Levels</div>
+                                    </div>
+                                    <div class="like_price">Free</div>
+                                </div>
+                                <div class="like_item">
+                                    <div>
+                                        <div class="like_title">Business Spanish</div>
+                                        <div class="like_subtitle">Advanced</div>
+                                    </div>
+                                    <div class="like_price">$49</div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <footer>© 2025 StudyPortal. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></footer>
+    </div>
+</div>

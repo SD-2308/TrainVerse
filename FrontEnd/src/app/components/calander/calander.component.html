@@ -1,0 +1,26 @@
+<div style="display: grid; grid-template-columns: 1fr; margin-top: 60px;">
+    <div>
+      <h2 class="section-title"><i class="fas fa-calendar-days"></i> Academic Calendar</h2>
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <h3>{{ monthName }}</h3>
+          <div>
+            <button class="btn btn-outline" (click)="prevMonth()"><i class="fas fa-chevron-left"></i></button>
+            <button class="btn btn-outline" (click)="nextMonth()"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="calendar-grid">
+          <div class="calendar-day-header">Sun</div>
+          <div class="calendar-day-header">Mon</div>
+          <div class="calendar-day-header">Tue</div>
+          <div class="calendar-day-header">Wed</div>
+          <div class="calendar-day-header">Thu</div>
+          <div class="calendar-day-header">Fri</div>
+          <div class="calendar-day-header">Sat</div>
+  
+          <div *ngFor="let day of days" class="calendar-day" [ngClass]="day.class">{{ day.date }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

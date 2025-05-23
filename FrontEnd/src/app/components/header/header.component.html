@@ -1,0 +1,58 @@
+<!-- Exact style Top Bar -->
+<div class="top-bar d-flex justify-content-between align-items-center px-4 py-2">
+    <div class="text-muted small">
+      PHONE: <span class="fw-semibold text-dark">+44 300 303 0266</span>
+    </div>
+    <div class="d-flex align-items-center gap-3 small text-muted">
+      
+      <div class="d-flex align-items-center gap-4">
+        
+        <a href="#"><i class="bi bi-facebook text-dark fs-5"></i></a>
+        <a href="#"><i class="bi bi-instagram text-dark fs-5"></i></a>
+        <a href="#"><i class="bi bi-twitter text-dark fs-5"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Main Navbar -->
+  <nav class="navbar navbar-expand-lg main-navbar px-4">
+    <a class="navbar-brand fs-3 fw-bold text-white" href="#">TrainVerse</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/course">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/instructors">Instructors</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/contact">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2" style="padding-right: 30px;">
+        <a *ngIf="hasUserSession()" routerLink="/Student_Dashboard"><i class="bi bi-person-circle fs-4 text-white cursor-pointer person"></i></a>
+        <a *ngIf="hasUserSession()" routerLink="/Student_Dashboard" style="color: white; text-decoration: none; font-size: 16px;">Dashboard</a>
+        <a *ngIf="hasProSession()" routerLink="/Professor_Dashboard"><i class="bi bi-person-circle fs-4 text-white cursor-pointer person"></i></a>
+        <a *ngIf="hasProSession()" routerLink="/Professor_Dashboard" style="color: white; text-decoration: none; font-size: 16px;">Dashboard</a>
+        <a *ngIf="hasAdminSession()" routerLink="/Admin_Dashboard"><i class="bi bi-person-circle fs-4 text-white cursor-pointer person"></i></a>
+        <a *ngIf="hasAdminSession()" routerLink="/Admin_Dashboard" style="color: white; text-decoration: none; font-size: 16px;">Dashboard</a>
+      </div> 
+      <div class="d-flex align-items-center gap-4">
+        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#loginModal" routerLink="/login">
+          Login / Register
+        </button>
+      </div>
+      
+    </div>
+  </nav>
+
+  
+  
+  
+  

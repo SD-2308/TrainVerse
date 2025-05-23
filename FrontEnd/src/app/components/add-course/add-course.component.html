@@ -1,0 +1,306 @@
+<app-admin-header></app-admin-header>
+
+<!-- Course Edit Form with Full Validation -->
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-9">
+          <div class="profile-card card border-0 shadow-lg rounded-lg p-4">
+            <div class="form-section">
+              <h4 class="mb-4">Add Course</h4>
+              <form (ngSubmit)="onUpdate()" #editForm="ngForm">
+
+                <!-- Course Name and Image URL -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="coursename" class="form-label">Course Name</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-book input-icon"></i>
+                      <input id="coursename" name="coursename" [(ngModel)]="course.coursename" required maxlength="100" pattern="[A-Za-z0-9\s\-]+" class="form-control icon-input" #coursename="ngModel" placeholder="Enter course name">
+                      <div *ngIf="coursename.invalid && (coursename.dirty || coursename.touched)" class="text-danger">
+                        <small *ngIf="coursename.errors?.['required']">Course name is required.</small>
+                        <small *ngIf="coursename.errors?.['maxlength']">Maximum 100 characters allowed.</small>
+                        <small *ngIf="coursename.errors?.['pattern']">Only letters, numbers, spaces and hyphens allowed.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="imageUrl" class="form-label">Image URL</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-image input-icon"></i>
+                      <input
+                        id="imageUrl"
+                        name="imageUrl"
+                        [(ngModel)]="course.imageUrl"
+                        class="form-control icon-input"
+                        required
+                        #imageUrl="ngModel"
+                        placeholder="Enter image URL"
+                      />
+                      <div *ngIf="imageUrl.invalid && imageUrl.touched" class="text-danger">
+                        <small *ngIf="imageUrl.errors?.['required']">Image URL is required.</small>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+                <!-- Instructor Info -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="instructorname" class="form-label">Instructor Name</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-chalkboard-teacher input-icon"></i>
+                      <input id="instructorname" name="instructorname" [(ngModel)]="course.instructorname" required pattern="^[A-Za-z\s]+$" maxlength="100" class="form-control icon-input" #instructorname="ngModel" placeholder="Enter instructor name">
+                      <div *ngIf="instructorname.invalid && instructorname.touched" class="text-danger">
+                        <small *ngIf="instructorname.errors?.['required']">Instructor name is required.</small>
+                        <small *ngIf="instructorname.errors?.['pattern']">Only characters allowed.</small>
+                        <small *ngIf="instructorname.errors?.['maxlength']">Maximum 100 characters allowed.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="instructorinstitution" class="form-label">Institution</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-university input-icon"></i>
+                      <input id="instructorinstitution" name="instructorinstitution" [(ngModel)]="course.instructorinstitution" required pattern="^[A-Za-z\s]+$" maxlength="100" class="form-control icon-input" #instructorinstitution="ngModel" placeholder="Enter institution">
+                      <div *ngIf="instructorinstitution.invalid && instructorinstitution.touched" class="text-danger">
+                        <small *ngIf="instructorinstitution.errors?.['required']">Institution is required.</small>
+                        <small *ngIf="instructorinstitution.errors?.['pattern']">Only characters allowed.</small>
+                        <small *ngIf="instructorinstitution.errors?.['maxlength']">Maximum 100 characters allowed.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duration and Language -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="duration" class="form-label">Duration</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-hourglass-half input-icon"></i>
+                      <input
+                        id="duration"
+                        name="duration"
+                        [(ngModel)]="course.duration"
+                        pattern="[A-Za-z0-9\s]+"
+                        required
+                        class="form-control icon-input"
+                        #duration="ngModel"
+                        placeholder="e.g., 6 Weeks"
+                      />
+                      <div *ngIf="duration.invalid && duration.touched" class="text-danger">
+                        <small *ngIf="duration.errors?.['required']">Duration is required.</small>
+                        <small *ngIf="duration.errors?.['pattern']">Only alphanumeric text allowed.</small>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="col-md-6">
+                    <label for="language" class="form-label">Language</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-language input-icon"></i>
+                      <input
+                        id="language"
+                        name="language"
+                        [(ngModel)]="course.language"
+                        pattern="^[A-Za-z\s]+$"
+                        required
+                        class="form-control icon-input"
+                        #language="ngModel"
+                        placeholder="e.g., English"
+                      />
+                      <div *ngIf="language.invalid && language.touched" class="text-danger">
+                        <small *ngIf="language.errors?.['required']">Language is required.</small>
+                        <small *ngIf="language.errors?.['pattern']">Only alphabetic characters allowed.</small>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+                <!-- Course Type and Skill Level -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="coursetype" class="form-label">Course Type</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-laptop-code input-icon"></i>
+                      <input
+                        id="coursetype"
+                        name="coursetype"
+                        [(ngModel)]="course.coursetype"
+                        class="form-control icon-input"
+                        required
+                        pattern="[A-Za-z\s]+"
+                        #coursetype="ngModel"
+                        placeholder="e.g., Online"
+                      />
+                      <div *ngIf="coursetype.invalid && coursetype.touched" class="text-danger">
+                        <small *ngIf="coursetype.errors?.['required']">Course type is required.</small>
+                        <small *ngIf="coursetype.errors?.['pattern']">Only alphabetic characters allowed.</small>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label for="skilllevel" class="form-label">Skill Level</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-signal input-icon"></i>
+                      <select id="skilllevel" name="skilllevel" [(ngModel)]="course.skilllevel" required class="form-control icon-input" #skilllevel="ngModel">
+                        <option value="" disabled selected>Select skill level</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                      </select>
+                      <div *ngIf="skilllevel.invalid && skilllevel.touched" class="text-danger">
+                        <small>Skill level is required.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Rating and Price -->
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="rating" class="form-label">Rating</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-star input-icon"></i>
+                      <input id="rating" name="rating" type="number" [(ngModel)]="course.rating" class="form-control icon-input" required min="0" max="5" step="0.5" #rating="ngModel" placeholder="e.g., 4.5">
+                      <div *ngIf="rating.invalid && rating.touched" class="text-danger">
+                        <small *ngIf="rating.errors?.['required']">Rating is required.</small>
+                        <small *ngIf="rating.errors?.['min'] || rating.errors?.['max']">Rating must be between 0 and 5.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="price" class="form-label">Price (₹)</label>
+                    <div class="input-icon-group">
+                      <i class="fas fa-dollar-sign input-icon"></i>
+                      <input id="price" name="price" type="text" [(ngModel)]="course.price" class="form-control icon-input" required #price="ngModel" placeholder="e.g., Free">
+                      <div *ngIf="price.invalid && price.touched" class="text-danger">
+                        <small *ngIf="price.errors?.['required']">Price is required.</small>                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Department -->
+                <div class="mb-3">
+                  <label for="department" class="form-label">Department</label>
+                  <div class="input-icon-group">
+                    <i class="fas fa-building input-icon"></i>
+                    <input id="department" name="department" [(ngModel)]="course.department" class="form-control icon-input" pattern="[A-Za-z\s]+" #department="ngModel" placeholder="e.g., Computer Science" required>
+                    <div *ngIf="department.invalid && department.touched" class="text-danger">
+                      <small *ngIf="department.errors?.['required']">Department is required.</small>
+                      <small *ngIf="department.errors?.['pattern']">Only characters allowed.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                  <label for="description" class="form-label">Course Description</label>
+                  <textarea id="description" name="description" [(ngModel)]="course.description" rows="3" class="form-control" #description="ngModel" required maxlength="1000" placeholder="Brief course overview"></textarea>
+                  <div *ngIf="description.invalid && description.touched" class="text-danger">
+                    <small *ngIf="description.errors?.['required']">Description is required.</small>
+                    <small *ngIf="description.errors?.['maxlength']">Maximum 1000 characters allowed.</small>
+                  </div>
+                </div>
+
+                <!-- About -->
+                <div class="mb-3">
+                  <label for="about" class="form-label">About the Course</label>
+                  <textarea
+                    id="about"
+                    name="about"
+                    class="form-control"
+                    [(ngModel)]="course.about"
+                    #about="ngModel"
+                    required
+                    maxlength="1000"
+                    rows="3"
+                    placeholder="What students will learn"
+                  ></textarea>
+                  
+                  <div *ngIf="about.invalid && (about.dirty || about.touched)" class="text-danger">
+                    <small *ngIf="about.errors?.['required']">About is required.</small>
+                    <small *ngIf="about.errors?.['maxlength']">Maximum 1000 characters allowed.</small>
+                  </div>
+                </div>
+                
+
+
+                  <!-- FAQ Section -->
+                  <!-- FAQ 1 -->
+                  <div class="mb-3">
+                    <label for="faq1Question" class="form-label">FAQ 1 Question</label>
+                    <input id="faq1Question" name="faq1Question" [(ngModel)]="course.faq1Question" class="form-control" required #faq1Q="ngModel" placeholder="Enter FAQ 1 question">
+                    <div *ngIf="faq1Q.invalid && faq1Q.touched" class="text-danger">
+                      <small *ngIf="faq1Q.errors?.['required']">FAQ 1 question is required.</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="faq1Answer" class="form-label">FAQ 1 Answer</label>
+                    <textarea id="faq1Answer" name="faq1Answer" [(ngModel)]="course.faq1Answer" class="form-control" rows="3" required #faq1A="ngModel" placeholder="Enter FAQ 1 answer"></textarea>
+                    <div *ngIf="faq1A.invalid && faq1A.touched" class="text-danger">
+                      <small *ngIf="faq1A.errors?.['required']">FAQ 1 answer is required.</small>
+                    </div>
+                  </div>
+
+                  <!-- FAQ 2 -->
+                  <div class="mb-3">
+                    <label for="faq2Question" class="form-label">FAQ 2 Question</label>
+                    <input id="faq2Question" name="faq2Question" [(ngModel)]="course.faq2Question" class="form-control" required #faq2Q="ngModel" placeholder="Enter FAQ 2 question">
+                    <div *ngIf="faq2Q.invalid && faq2Q.touched" class="text-danger">
+                      <small *ngIf="faq2Q.errors?.['required']">FAQ 2 question is required.</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="faq2Answer" class="form-label">FAQ 2 Answer</label>
+                    <textarea id="faq2Answer" name="faq2Answer" [(ngModel)]="course.faq2Answer" class="form-control" rows="3" required #faq2A="ngModel" placeholder="Enter FAQ 2 answer"></textarea>
+                    <div *ngIf="faq2A.invalid && faq2A.touched" class="text-danger">
+                      <small *ngIf="faq2A.errors?.['required']">FAQ 2 answer is required.</small>
+                    </div>
+                  </div>
+
+                  <!-- FAQ 3 -->
+                  <div class="mb-3">
+                    <label for="faq3Question" class="form-label">FAQ 3 Question</label>
+                    <input id="faq3Question" name="faq3Question" [(ngModel)]="course.faq3Question" class="form-control" required #faq3Q="ngModel" placeholder="Enter FAQ 3 question">
+                    <div *ngIf="faq3Q.invalid && faq3Q.touched" class="text-danger">
+                      <small *ngIf="faq3Q.errors?.['required']">FAQ 3 question is required.</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="faq3Answer" class="form-label">FAQ 3 Answer</label>
+                    <textarea id="faq3Answer" name="faq3Answer" [(ngModel)]="course.faq3Answer" class="form-control" rows="3" required #faq3A="ngModel" placeholder="Enter FAQ 3 answer"></textarea>
+                    <div *ngIf="faq3A.invalid && faq3A.touched" class="text-danger">
+                      <small *ngIf="faq3A.errors?.['required']">FAQ 3 answer is required.</small>
+                    </div>
+                  </div>
+
+
+
+
+
+                <!-- Submit Button -->
+                <div class="d-grid mt-4">
+                  <button type="submit" class="btn btn-primary update-btn" [disabled]="editForm.invalid">
+                    <i class="fas fa-save me-2"></i>Add Course
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 text-center mt-4">
+      © 2025 StudyPortal. All rights reserved. |
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,352 @@
+<app-header></app-header>
+
+<div class="container-fluid gradient-background">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-lg-5 col-md-8 mx-auto">
+        <div class="card  border-0">
+          <div class="card-body p-4 p-sm-5">
+            
+            <!-- Tabs -->
+            <ul class="nav nav-pills nav-justified mb-4">
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="selectedTab === 'user'" (click)="switchTab('user')">User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="selectedTab === 'professor'" (click)="switchTab('professor')">Professor</a>
+              </li>
+            </ul>
+  
+            <!-- Error Message -->
+            <div *ngIf="msg" class="alert alert-danger">{{msg}}</div>
+  
+            
+<!-- User Form -->
+<form *ngIf="selectedTab === 'user'" #userform="ngForm" (ngSubmit)="registerUser()">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <label class="form-label">Username*</label>
+          <input type="text" class="form-control" name="username" 
+                 [(ngModel)]="user.username" 
+                 #username="ngModel"
+                 pattern="^[a-zA-Z ]+$"
+                 required>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+            <small *ngIf="username.errors?.['required']">Username is required</small>
+            <small *ngIf="username.errors?.['pattern']">Only letters and spaces allowed</small>
+          </div>
+        </div>
+  
+        <div class="form-group mb-3">
+          <label class="form-label">Gender*</label>
+          <select class="form-select" name="gender" 
+                  [(ngModel)]="user.gender" 
+                  #gender="ngModel"
+                  required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="text-danger">
+            <small>Gender is required</small>
+          </div>
+        </div>
+  
+        <div class="form-group mb-3">
+          <label class="form-label">Profession*</label>
+          <input type="text" class="form-control" name="profession" 
+                 [(ngModel)]="user.profession" 
+                 #profession="ngModel"
+                 pattern="^[a-zA-Z ]+$"
+                 required>
+          <div *ngIf="profession.invalid && (profession.dirty || profession.touched)" class="text-danger">
+            <small *ngIf="profession.errors?.['required']">Profession is required</small>
+            <small *ngIf="profession.errors?.['pattern']">Only letters and spaces allowed</small>
+          </div>
+        </div>
+  
+        <div class="form-group mb-3">
+          <label class="form-label">Password*</label>
+          <input type="password" class="form-control" name="password" 
+                 [(ngModel)]="user.password" 
+                 #password="ngModel"
+                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                 required>
+          <div class="password-strength mt-2">
+            <div class="progress" style="height: 4px;">
+              <div class="progress-bar" 
+                   [ngClass]="{
+                     'bg-danger': getPasswordStrength(user.password) === 'Very Weak',
+                     'bg-warning': getPasswordStrength(user.password) === 'Weak',
+                     'bg-info': getPasswordStrength(user.password) === 'Moderate',
+                     'bg-success': getPasswordStrength(user.password) === 'Strong'
+                   }"
+                   [style.width.%]="getPasswordProgress(user.password)">
+              </div>
+            </div>
+            <small class="text-muted">{{getPasswordStrength(user.password)}} Password</small>
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+            <small>Must contain: uppercase, lowercase, number, special character, min 8 chars</small>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Right Column -->
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <label class="form-label">Mobile*</label>
+          <input type="tel" class="form-control" name="mobile" 
+                 [(ngModel)]="user.mobile" 
+                 #mobile="ngModel"
+                 pattern="^[0-9]{10}$"
+                 maxlength="10"
+                 required>
+          <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="text-danger">
+            <small *ngIf="mobile.errors?.['required']">Mobile is required</small>
+            <small *ngIf="mobile.errors?.['pattern']">Must be 10 digits (numbers only)</small>
+          </div>
+        </div>
+  
+        <div class="form-group mb-3">
+          <label class="form-label">Email*</label>
+          <input type="email" class="form-control" name="email" 
+                 [(ngModel)]="user.email" 
+                 #email="ngModel"
+                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+                 required>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+            <small *ngIf="email.errors?.['required']">Email is required</small>
+            <small *ngIf="email.errors?.['pattern']">Valid format: user&#64;example.com</small>
+          </div>
+        </div>
+  
+        <div class="form-group mb-3">
+          <label class="form-label">Address*</label>
+          <input type="text" class="form-control" name="address" 
+                 [(ngModel)]="user.address" 
+                 #address="ngModel"
+                 required>
+          <div *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">
+            <small>Address is required</small>
+          </div>
+        </div>
+  
+        <div class="form-group mb-3">
+          <label class="form-label">Confirm Password*</label>
+          <input type="password" class="form-control" name="confirmUserPassword" 
+                 [(ngModel)]="confirmUserPassword" 
+                 #confirmUserPasswordField="ngModel"
+                 required>
+          <small *ngIf="user.password !== confirmUserPassword && confirmUserPassword" 
+                 class="text-danger">Passwords don't match</small>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Terms and Submit -->
+    <div class="form-check mb-4">
+      <input class="form-check-input" type="checkbox" 
+             name="userTermsAccepted" 
+             [(ngModel)]="userTermsAccepted" 
+             #terms="ngModel"
+             required>
+      <label class="form-check-label">
+        I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
+      </label>
+      <div *ngIf="terms.invalid && userform.submitted" class="text-danger">
+        <small>You must accept the terms</small>
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary w-100 py-2" 
+            [disabled]="userform.invalid || !userTermsAccepted || (user.password !== confirmUserPassword)">
+      Register
+    </button>
+  
+    <div class="text-center mt-3">
+      <p>Already a member? <a [routerLink]="['/login']" class="text-primary">Sign In</a></p>
+    </div>
+  </form>
+  
+            <!-- Professor Form -->
+            <form *ngIf="selectedTab === 'professor'" #professorform="ngForm" (ngSubmit)="registerProfessor()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Professor Name*</label>
+                    <input type="text" class="form-control" name="professorname" 
+                           [(ngModel)]="professor.professorname" 
+                           #professorname="ngModel"
+                           pattern="^[a-zA-Z ]+$"
+                           required>
+                    <div *ngIf="professorname.invalid && (professorname.dirty || professorname.touched)" class="text-danger">
+                      <small *ngIf="professorname.errors?.['required']">Name is required</small>
+                      <small *ngIf="professorname.errors?.['pattern']">Only letters and spaces allowed</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Email*</label>
+                    <input type="email" class="form-control" name="email" 
+                           [(ngModel)]="professor.email" 
+                           #professoremail="ngModel"
+                           pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+                           required>
+                    <div *ngIf="professoremail.invalid && (professoremail.dirty || professoremail.touched)" class="text-danger">
+                      <small *ngIf="professoremail.errors?.['required']">Email is required</small>
+                      <small *ngIf="professoremail.errors?.['pattern']">Valid format: user&#64;example.com</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Gender*</label>
+                    <select class="form-control" name="gender" 
+                            [(ngModel)]="professor.gender" 
+                            #professorgender="ngModel"
+                            required>
+                      <option value="" disabled selected>Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                    <div *ngIf="professorgender.invalid && (professorgender.dirty || professorgender.touched)" class="text-danger">
+                      <small>Gender is required</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Mobile*</label>
+                    <input type="tel" class="form-control" name="mobile" 
+                           [(ngModel)]="professor.mobile" 
+                           #professormobile="ngModel"
+                           pattern="^[0-9]{10}$"
+                           maxlength="10"
+                           required>
+                    <div *ngIf="professormobile.invalid && (professormobile.dirty || professormobile.touched)" class="text-danger">
+                      <small *ngIf="professormobile.errors?.['required']">Mobile is required</small>
+                      <small *ngIf="professormobile.errors?.['pattern']">Must be 10 digits (numbers only)</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Password*</label>
+                    <input type="password" class="form-control" name="password" 
+                           [(ngModel)]="professor.password" 
+                           #professorpassword="ngModel"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                           required>
+                    <div class="password-strength mt-2">
+                      <div class="progress" style="height: 4px;">
+                        <div class="progress-bar" 
+                             [ngClass]="{
+                               'bg-danger': getPasswordStrength(professor.password) === 'Very Weak',
+                               'bg-warning': getPasswordStrength(professor.password) === 'Weak',
+                               'bg-info': getPasswordStrength(professor.password) === 'Moderate',
+                               'bg-success': getPasswordStrength(professor.password) === 'Strong'
+                             }"
+                             [style.width.%]="getPasswordProgress(professor.password)">
+                        </div>
+                      </div>
+                      <small class="text-muted">{{getPasswordStrength(professor.password)}} Password</small>
+                    </div>
+                    <div *ngIf="professorpassword.invalid && (professorpassword.dirty || professorpassword.touched)" class="text-danger">
+                      <small>Must contain: uppercase, lowercase, number, special character, min 8 chars</small>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label class="form-label">Institution*</label>
+                    <input type="text" class="form-control" name="institutionname" 
+                           [(ngModel)]="professor.institutionname" 
+                           #institutionname="ngModel"
+                           pattern="^[a-zA-Z ]+$"
+                           required>
+                    <div *ngIf="institutionname.invalid && (institutionname.dirty || institutionname.touched)" class="text-danger">
+                      <small *ngIf="institutionname.errors?.['required']">Institution is required</small>
+                      <small *ngIf="institutionname.errors?.['pattern']">Only letters and spaces allowed</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Department*</label>
+                    <input type="text" class="form-control" name="department" 
+                           [(ngModel)]="professor.department" 
+                           #department="ngModel"
+                           pattern="^[a-zA-Z ]+$"
+                           required>
+                    <div *ngIf="department.invalid && (department.dirty || department.touched)" class="text-danger">
+                      <small *ngIf="department.errors?.['required']">Department is required</small>
+                      <small *ngIf="department.errors?.['pattern']">Only letters and spaces allowed</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Experience (Years)*</label>
+                    <input type="number" class="form-control" name="experience" 
+                           [(ngModel)]="professor.experience" 
+                           #experience="ngModel"
+                           min="0"
+                           max="50"
+                           required>
+                    <div *ngIf="experience.invalid && (experience.dirty || experience.touched)" class="text-danger">
+                      <small *ngIf="experience.errors?.['required']">Experience is required</small>
+                      <small *ngIf="experience.errors?.['min'] || experience.errors?.['max']">Must be between 0-50 years</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Degrees*</label>
+                    <input type="text" class="form-control" name="degreecompleted" 
+                           [(ngModel)]="professor.degreecompleted" 
+                           #degreecompleted="ngModel"
+                           pattern="^[a-zA-Z,. ]+$"
+                           required>
+                    <div *ngIf="degreecompleted.invalid && (degreecompleted.dirty || degreecompleted.touched)" class="text-danger">
+                      <small *ngIf="degreecompleted.errors?.['required']">Degrees are required</small>
+                      <small *ngIf="degreecompleted.errors?.['pattern']">Only letters, commas and spaces allowed</small>
+                    </div>
+                  </div>
+  
+                  <div class="form-group mb-3">
+                    <label class="form-label">Confirm Password*</label>
+                    <input type="password" class="form-control" name="confirmProfessorPassword" 
+                           [(ngModel)]="confirmProfessorPassword" 
+                           #confirmProfessorPasswordField="ngModel"
+                           required>
+                    <small *ngIf="professor.password !== confirmProfessorPassword && confirmProfessorPassword" 
+                           class="text-danger">Passwords don't match</small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" 
+                       name="professorTermsAccepted" 
+                       [(ngModel)]="professorTermsAccepted" 
+                       #professorTerms="ngModel"
+                       required>
+                <label class="form-check-label">I agree to all Terms & Conditions</label>
+                <div *ngIf="professorTerms.invalid && professorform.submitted" class="text-danger">
+                  <small>You must accept the terms</small>
+                </div>
+              </div>
+  
+              <button type="submit" class="btn btn-primary w-100" 
+                      [disabled]="professorform.invalid || !professorTermsAccepted || (professor.password !== confirmProfessorPassword)">
+                Register
+              </button>
+  
+              <div class="text-center mt-3">
+                <small>Already have an account? <a [routerLink]="['/login']" class="text-primary">Sign In</a></small>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<app-footer></app-footer>

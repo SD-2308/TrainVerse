@@ -1,0 +1,319 @@
+<app-header></app-header>
+    
+<!-- Main Content -->
+<div class="container-fluid py-5">
+    <div class="container">
+
+
+        <!-- Trending News Carousel -->
+        <!-- <div class="mb-5">
+            <h4 class="section-title">Upcoming Events</h4> 
+            <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="news-card">
+                                    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="Trending News" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>Here's a new way to take better photos for instagram</h6>
+                                        <small>Walter Johnson - March 7, 2017</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div> -->
+        <!-- Trending News Carousel -->
+        <!-- <div class="mb-5">
+            <h4 class="section-title">Upcoming Events</h4>
+            <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" *ngFor="let event of events; let i = index">
+                        <div class="row">
+                            <div class="col-md-3" *ngFor="let event of events">
+                                <div class="news-card">
+                                    <img [src]="event.imageUrl" alt="{{ event.title }}" class="img-fluid">
+                                    <div class="news-overlay">
+                                        <h6>{{ event.title }}</h6>
+                                        <small>{{ event.speaker }} - {{ event.date }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div> -->
+
+        <div class="mb-5">
+            <h4 class="section-title text-primary fw-bold mb-4">Upcoming Events</h4>
+            <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div 
+                  class="carousel-item" 
+                  *ngFor="let group of groupedEvents; let i = index" 
+                  [ngClass]="{ active: i === 0 }"
+                >
+                  <div class="row g-3">
+                    <div class="col-md-3" *ngFor="let event of group">
+                      <div class="card border-0 h-100">
+                        <img [src]="event.imageUrl" class="card-img-top rounded-top" alt="{{ event.title }}">
+                        <div class="card-body text-center">
+                          <h6 class="card-title mb-1">{{ event.title }}</h6>
+                          <small class="text-muted">
+                            <i class="bi bi-calendar-event me-1"></i>{{ event.date | date: 'mediumDate' }}
+                          </small><br>
+                          <button 
+                            class="btn btn-sm mt-3"
+                            [ngClass]="isRegistered(event.title) ? 'btn-outline-secondary' : 'btn-outline-primary'"
+                            [disabled]="isRegistered(event.title)"
+                            (click)="showRegisterPopup(event)">
+                            {{ isRegistered(event.title) ? 'Registered' : 'Register' }}
+                          </button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+              <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+        </div>
+          
+
+
+        <!-- Video News Section -->
+        <div class="bg-dark text-white p-5 mb-5 rounded">
+            <h4 class="section-title text-white">Workshops</h4> 
+            <div class="row">
+                <!-- Python Workshop -->
+                <div class="col-md-3 mb-4">
+                    <div class="video-card">
+                        <img src="https://i.ytimg.com/vi/dgDipVg-kME/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCAKqKVL3hZE0NI2lqwI_Ka_ivcYw" alt="Python Workshop" class="img-fluid rounded">
+                        <div class="mt-3" style="margin-bottom: 10px;">
+                            <a href="https://www.youtube.com/watch?v=ak4cJG_6ENM" style="color: azure; text-decoration: none;">
+                                <h6>Python Programming Workshop</h6>
+                                <small><i class="far fa-clock"></i> April 10, 2025</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Java Workshop -->
+                <div class="col-md-3 mb-4">
+                    <div class="video-card">
+                        <img src="https://training.shirosoft.com/images/workshop/workshop5.png" alt="Java Workshop" class="img-fluid rounded">
+                        <div class="mt-3" style="margin-bottom: 10px;">
+                            <a href="https://www.youtube.com/watch?v=DGJHrd10mVA" style="color: azure; text-decoration: none;">
+                                <h6>Java Programming Workshop</h6>
+                                <small><i class="far fa-clock"></i> Jan 12, 2025</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JavaScript Workshop -->
+                <div class="col-md-3 mb-4">
+                    <div class="video-card">
+                        <img src="https://fireship.io/courses/javascript/img/featured.png" alt="JavaScript Workshop" class="img-fluid rounded">
+                        <div class="mt-3" style="margin-bottom: 10px;">
+                            <a href="https://www.youtube.com/watch?v=W6NZfCO5SIk" style="color: azure; text-decoration: none;">
+                                <h6>JavaScript Development Workshop</h6>
+                                <small><i class="far fa-clock"></i> Dec 15, 2024</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI / Machine Learning Workshop -->
+                <div class="col-md-3 mb-4">
+                    <div class="video-card" style="margin-bottom: 10px;">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D12AQEOM6rzHopGmA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1697112235781?e=2147483647&v=beta&t=-fVMrsO-OOCPIPuOfIH9A3LIPQJff_L_MUnm0UjsB5s" alt="AI Workshop" class="img-fluid rounded">
+                        <div class="mt-3" style="margin-bottom: 10px;">
+                            <a href="https://www.youtube.com/watch?v=6Yvq3rDuN3I" style="color: azure; text-decoration: none;">
+                                <h6>AI & Machine Learning Workshop</h6>
+                                <small><i class="far fa-clock"></i> Aug 18, 2024</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Student Placements Section --> 
+<div class="row mb-5">
+    <h4 class="section-title">Student Placements</h4>
+    
+    <!-- Main Placement Image -->
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="news-card">
+            <img src="https://fabrikbrands.com/wp-content/uploads/Logos-of-Multinational-Companies-1-1155x770.png" alt="Student Placements" class="img-fluid">
+            <div class="news-overlay">
+                <small><i class="far fa-clock"></i> Apr 28, 2025</small>
+                <h4 class="mt-2">Our Top Placements for 2025</h4>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional Placement News -->
+    <div class="col-lg-6">
+        <div class="row">
+            
+            <!-- Placement 1 -->
+            <div class="col-md-6 mb-4">
+                <div class="news-card">
+                    <img src="https://www.iimu.ac.in/upload_data/main_containts/Members/the-placement-committee-2023-25.jpg" alt="Placement News 1" class="img-fluid">
+                    <div class="news-overlay">
+                        <small><i class="far fa-clock"></i> Apr 22, 2025</small>
+                        <h5 class="mt-2">Company X  Hires 20 Students</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placement 2 -->
+            <div class="col-md-6 mb-4">
+                <div class="news-card">
+                    <img src="https://www.foundit.in/career-advice/wp-content/uploads/2021/08/1598886685.jpg" alt="Placement News 2" class="img-fluid">
+                    <div class="news-overlay">
+                        <small><i class="far fa-clock"></i> Apr 20, 2025</small>
+                        <h5 class="mt-2">Top Recruiters Join the Placement Drive</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placement 3 -->
+            <div class="col-md-6 mb-4">
+                <div class="news-card">
+                    <img src="https://iihmr.edu.in/siteassets/images/plcmt-glance.webp" alt="Placement News 3" class="img-fluid">
+                    <div class="news-overlay">
+                        <small><i class="far fa-clock"></i> Apr 15, 2025</small>
+                        <h5 class="mt-2">Students from Batch 2025 Secure Global Offers</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placement 4 -->
+            <div class="col-md-6 mb-4">
+                <div class="news-card">
+                    <img src="https://ggdsd.ac.in/wp-content/themes/ggdsd/img/placement-cell/placement-cell5.jpg" alt="Placement News 4" class="img-fluid">
+                    <div class="news-overlay">
+                        <small><i class="far fa-clock"></i> Apr 10, 2025</small>
+                        <h5 class="mt-2">New Record in International Placements</h5>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+
+
+<app-footer></app-footer>

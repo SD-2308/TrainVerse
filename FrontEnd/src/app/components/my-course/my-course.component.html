@@ -1,0 +1,58 @@
+<app-dashboard-header></app-dashboard-header>
+
+<div class="layout">
+  <div class="main-content">
+    <div class="container">
+      <!-- Course Header -->
+      <div class="course-header">
+        <div>
+          <h2 class="course-title">Enrolled Courses</h2>
+          <p class="course-subtitle">The Best Course For You</p>
+        </div>
+        <button class="explore-btn">
+          <i class="fas fa-compass"></i> Explore More
+        </button>
+      </div>
+
+      <!-- Course Grid or No Courses -->
+      <ng-container *ngIf="(myenrollments | async) as enrollments; else noCourses">
+        <div class="course-grid" *ngIf="enrollments.length > 0; else noCourses">
+          <ng-container *ngFor="let data of enrollments">
+            <div class="course-card card-1">
+              <div class="card-image">
+                <img [src]="data.youtubeurl" alt="Course Image" />
+              </div>
+              <div class="card-header">
+                <div class="course-name" [routerLink]="['/Course_Content', data.courseid]">
+                  {{ data.coursename }}
+                </div>
+                <div class="course-videos">5 Chapters • {{ data.skilllevel }}</div>
+              </div>
+              <div class="card-footer">
+                <a [routerLink]="['/Course_Content', data.courseid]" class="start-btn">
+                  <span>Start Now</span>
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <!-- No Courses Message -->
+      <ng-template #noCourses>
+        <div class="no-events-container">
+          <p class="no-events-text">No Courses are enrolled.</p>
+          <a routerLink="/course" class="link-events-btn">
+            <i class="fas fa-calendar-alt"></i> Browse All Courses
+          </a>
+        </div>
+      </ng-template>
+    </div>
+
+    <footer>
+      © 2025 StudyPortal. All rights reserved. |
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<div class="home">
+    <div class="breadcrumbs_container">
+        <div class="row">
+            <div class="col">
+                <ul class="breadcrumbs_list d-flex align-items-center gap-2">
+                    <li><a routerLink="/home">home</a></li>
+                    <li><a routerLink="/course">courses</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search Bar Section -->
+<div class="container my-4">
+    <div class="row">
+        <div class="col">
+            <div class="search-bar-container">
+                <input type="text" 
+                       class="form-control search-bar" 
+                       [(ngModel)]="searchQuery" 
+                       (input)="searchCourses()" 
+                       placeholder="Search for courses..." />
+                <i class="bi bi-search search-icon" style="margin-right: 20px;"></i> <!-- Adding a search icon -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="container">
+    <div class="courses">
+        <div class="courses_background"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="section_title text-center">Popular Online Courses</h2>
+                </div>
+            </div>
+            <div class="row courses_row">
+                <ng-container>
+                    <ng-container *ngFor="let data of filteredCourses">
+                        <!-- Course -->
+                        <div class="col-lg-4 course_col">
+                            <div class="course">
+                                <div class="course_image"><img [src]="data.imageUrl" alt="Course Image"></div>
+                                <div class="course_body">
+                                    <div class="course_title">
+                                        <a [routerLink]="['/Course_Details', data.courseid]">{{data.coursename}}</a>
+                                    </div>
+                                    <div class="course_info">
+                                        <ul>
+                                            <li><a [routerLink]="['/instructors']">{{data.instructorname}}</a></li>
+                                            <li><a>{{data.language}}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="course_text">
+                                        <p>{{data.description}}</p>
+                                    </div>
+                                </div>
+                                <div class="course_footer d-flex flex-row align-items-center justify-content-start">
+                                    <div class="course_students"><i class="fa fa-language" aria-hidden="true"  style="margin-right: unset; margin-right: 10px; margin-bottom: 2px;  font-size: 14px;"></i><span style="font-size: 14px;">{{data.language}}</span></div>
+                                    <div class="course_rating ml-auto"><i class="fa fa-clock" aria-hidden="true" style="margin-right: unset; margin-right: 10px; font-size: 14px;"></i><span style="font-size: 14px; margin-bottom: 2px;">{{data.duration}}</span></div>
+                                    <div class="course_mark course_free trans_200"><a [routerLink]="['/Course_Details', data.courseid]">₹ {{data.price}}</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
